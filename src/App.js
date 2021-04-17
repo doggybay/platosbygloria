@@ -1,7 +1,5 @@
 import React from 'react';
-// import './App.css';
 import AppBar from "@material-ui/core/AppBar";
-import Button from "@material-ui/core/Button";
 import FastfoodIcon from "@material-ui/icons/Fastfood";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
