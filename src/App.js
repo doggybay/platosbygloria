@@ -81,10 +81,14 @@ function App() {
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
-                  <Typography>818-618-1448</Typography>
+                  <Typography>
+                    <a href="tel:+1-818-618-1448">818-618-1448</a> 
+                  </Typography>
                 </Grid>
                 <Grid item>
-                  <Typography>example@example.com</Typography>
+                  <Typography>
+                    <a href="mailto:platosbygloria@gmail.com">Mande Email</a>
+                  </Typography>
                 </Grid>
               </Grid>
             </div>
