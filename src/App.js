@@ -1,14 +1,13 @@
 import React from 'react';
-import AppBar from "@material-ui/core/AppBar";
-import FastfoodIcon from "@material-ui/icons/Fastfood";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Grid from "@material-ui/core/Grid";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import Plate from "./components/plates/Plate";
-import { plates } from "./assets/data/plates";
+import Plates from "./components/plates/Plates";
+import ContactInfo from "./components/ContactInfo";
+import NavBar from "./components/layout/NavBar";
+import Footer from "./components/layout/Footer";
+import BizName from "./components/BizName";
+import BizDescription from "./components/BizDescription";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -49,74 +48,25 @@ function App() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <AppBar position="relative">
-        <Toolbar>
-          <FastfoodIcon className={classes.icon} />
-          <Typography variant="h6" color="inherit" noWrap>
-            Platos by Gloria
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      <NavBar classes={classes} />
       <main>
         {/* Hero unit */}
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
-            <Typography
-              component="h1"
-              variant="h2"
-              align="center"
-              color="textPrimary"
-              gutterBottom
-            >
-              Platos by Gloria
-            </Typography>
-            <Typography
-              variant="h5"
-              align="center"
-              color="textSecondary"
-              paragraph
-            >
-              Authentica Cocina Guatemanteca
-            </Typography>
+            <BizName />
+            <BizDescription />
             <div className={classes.heroButtons}>
-              <Grid container spacing={2} justify="center">
-                <Grid item>
-                  <Typography>
-                    <a href="tel:+1-818-618-1448">818-618-1448</a> 
-                  </Typography>
-                </Grid>
-                <Grid item>
-                  <Typography>
-                    <a href="mailto:platosbygloria@gmail.com">Mande Email</a>
-                  </Typography>
-                </Grid>
-              </Grid>
+              <ContactInfo />
             </div>
           </Container>
         </div>
+        {/* End hero unit */}
         <Container className={classes.cardGrid} maxWidth="md">
-          {/* End hero unit */}
-          <Grid container spacing={4}>
-            {plates.map((plate) => (
-              <Plate plate={plate} />
-            ))}
-          </Grid>
+          <Plates />
         </Container>
       </main>
       {/* Footer */}
-      <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>
-          Platos by Gloria
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="textSecondary"
-          component="p"
-        >
-          Thanks for stopping by.
-        </Typography>
-      </footer>
+      <Footer classes={classes} />
       {/* End footer */}
     </React.Fragment>
   );
