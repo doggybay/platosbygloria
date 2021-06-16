@@ -12,5 +12,3 @@ services:
       - 3000:3000
     
     command: npm start
-
-      the study of living and dead malls 
