@@ -11,6 +11,6 @@ services:
     ports:
       - 3000:3000
     
-    command: npm run dev
+    command: npm start
 
       the study of living and dead malls 
