@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  platosbygloria-dev:
+    container_name: platosbygloria-dev
+    build: .
+    volumes:
+      - .:/app
+    restart: unless-stopped
+
+    ports:
+      - 3000:3000
+    
+    command: npm run dev
+
+      the study of living and dead malls 
