@@ -5,7 +5,9 @@ import BizName from "./BizName";
 import BizDescription from "./BizDescription";
 import ContactInfo from "./ContactInfo";
 import Plates from "../plates/Plates";
-
+import CardMedia from "@material-ui/core/CardMedia";
+import Card from "@material-ui/core/Card";
+import * as pictures from "../../assets/pictures/pictures";
 
 const Content = () => {
   const classes = contentStyles();
@@ -14,7 +16,10 @@ const Content = () => {
       {/* Hero unit */}
       <div className={classes.heroContent}>
         <Container maxWidth="sm">
-          <BizName />
+          
+            <BizName classes={classes} />
+          
+
           <BizDescription />
           <div className={classes.heroButtons}>
             <ContactInfo />
