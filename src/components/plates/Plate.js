@@ -18,14 +18,14 @@ const Plate = ({ plate }) => {
             image={plate.picture}
             title="Image title"
           />
-          <CardContent className={classes.cardContent}>
+          {/* <CardContent className={classes.cardContent}>
             <Typography gutterBottom variant="h5" component="h2">
               {plate.name}
             </Typography>
             <Typography>
               {plate.description}
             </Typography>
-          </CardContent>
+          </CardContent> */}
         </Card>
       </Grid>
   );
