@@ -14,7 +14,7 @@ const Content = () => {
       {/* Hero unit */}
       <div className={classes.heroContent}>
         <Container maxWidth="sm">
-          <BizName />
+            <BizName classes={classes} />
           <BizDescription />
           <div className={classes.heroButtons}>
             <ContactInfo />

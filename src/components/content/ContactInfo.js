@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography";
 
 const ContactInfo = () => {
   return (
-    <Grid container spacing={2} justify="center">
+    <Grid container spacing={2} justifyContent="center">
       <Grid item>
         <Typography>
           <a href="tel:+1-818-618-1448">818-618-1448</a>

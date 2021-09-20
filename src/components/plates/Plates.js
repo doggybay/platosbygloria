@@ -8,7 +8,7 @@ import { platesStyles } from "../../styles/plates/styles";
 
 const Plates = () => {
   const classes = platesStyles();
-  const listOfPlates = plates.map((plate) => <Plate plate={plate} />);
+  const listOfPlates = plates.map((plate) => <Plate key={plate.id} plate={plate} />);
   return (
     <Container className={classes.cardGrid} maxWidth="md">
       <Grid container spacing={4}>
