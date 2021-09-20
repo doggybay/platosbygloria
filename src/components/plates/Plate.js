@@ -11,8 +11,8 @@ const Plate = ({ plate }) => {
   const classes = plateStyles();
 
   return (
-      <Grid item key={plate.id} xs={12} sm={6} md={4}>
-        <Card className={classes.card}>
+      <Grid item xs={12} sm={6} md={4}>
+        <Card  className={classes.card}>
           <CardMedia
             className={classes.cardMedia}
             image={plate.picture}
