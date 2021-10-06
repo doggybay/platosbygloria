@@ -5,6 +5,7 @@ import BizName from "./BizName";
 import BizDescription from "./BizDescription";
 import ContactInfo from "./ContactInfo";
 import Plates from "../plates/Plates";
+import PicStepper from "./PicStepper"
 
 
 const Content = () => {
@@ -15,6 +16,7 @@ const Content = () => {
       <div className={classes.heroContent}>
         <Container maxWidth="sm">
             <BizName classes={classes} />
+            <PicStepper />
           <BizDescription />
           <div className={classes.heroButtons}>
             <ContactInfo />
