@@ -10,6 +10,7 @@ light orange: "#fae6b1"
 
 const theme = createTheme({
   palette: {
+    mode: "dark",
     primary: {
       main: "#31525b",
     },
