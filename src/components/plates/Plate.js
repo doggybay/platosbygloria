@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import Card from "@material-ui/core/Card";
+import Grid from '@material-ui/core/Grid';
+import Card from '@material-ui/core/Card';
 import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import { plateStyles } from "../../styles/plates/styles";
+import CardMedia from '@material-ui/core/CardMedia';
+import { plateStyles } from '../../styles/plates/styles';
 
 
 const Plate = ({ plate }) => {
