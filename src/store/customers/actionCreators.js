@@ -10,6 +10,8 @@ const fetchAllCustomers = () => {
       dispatch(actions.fetchAllCustomersPending());
 
       const res = await axios.get(`${BASE_URL}/customers`);
+
+      
       
       dispatch(actions.fetchAllCustomersSuccess(res.data));
       
@@ -42,7 +44,7 @@ const addOneCustomer = (newCustomer) => {
       dispatch(actions.addOneCustomerPending());
 
       const res = await axios.post(`${BASE_URL}/customers`, newCustomer);
-      
+
       dispatch(actions.addOneCustomerSuccess(res.data));
       
     } catch (err) {
@@ -83,10 +85,29 @@ const deleteOneCustomer = (id) => {
   };
 };
 
+const deleteCustomers = (ids) => {
+  return async (dispatch) => {
+    
+    try {
+      dispatch(actions.deleteCustomersPending());
+
+      const formattedIds = { data: ids }
+
+      const res = await axios.delete(`${BASE_URL}/customers`, formattedIds);
+      
+      dispatch(actions.deleteCustomersSuccess(res.data));
+      
+    } catch (err) {
+      dispatch(actions.deleteCustomersFailed(err));
+    }
+  };
+};
+
 export {
   fetchAllCustomers,
   fetchOneCustomer,
   addOneCustomer,
   updateOneCustomer,
-  deleteOneCustomer
+  deleteOneCustomer,
+  deleteCustomers
 }

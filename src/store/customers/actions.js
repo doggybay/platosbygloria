@@ -70,6 +70,20 @@ const deleteOneCustomerFailed = (err) => ({
   payload: err
 });
 
+const deleteCustomersPending = () => ({
+  type: constants.DELETE_CUSTOMERS_PENDING
+});
+
+const deleteCustomersSuccess = (deletedCustomers) => ({
+  type: constants.DELETE_CUSTOMERS_SUCCESS,
+  payload: deletedCustomers
+});
+
+const deleteCustomersFailed = (err) => ({
+  type: constants.DELETE_CUSTOMERS_FAILED,
+  payload: err
+});
+
 export {
   fetchAllCustomersPending,
   fetchAllCustomersSuccess,
@@ -85,5 +99,8 @@ export {
   updateOneCustomerFailed,
   deleteOneCustomerPending,
   deleteOneCustomerSuccess,
-  deleteOneCustomerFailed
+  deleteOneCustomerFailed,
+  deleteCustomersPending,
+  deleteCustomersSuccess,
+  deleteCustomersFailed
 }
