@@ -7,19 +7,22 @@ let initialState = {
 };
 
 const reducer = (state = initialState, action) => {
+  
   switch (action.type) {
     case constants.FETCH_ALL_CUSTOMERS_PENDING:
     case constants.FETCH_ONE_CUSTOMER_PENDING:
     case constants.ADD_ONE_CUSTOMER_PENDING:
     case constants.UPDATE_ONE_CUSTOMER_PENDING:
-    case constants.DELETE_ONE_CUSTOMER_PENDING:  
+    case constants.DELETE_ONE_CUSTOMER_PENDING:
+    case constants.DELETE_CUSTOMERS_PENDING:    
       return state;
 
     case constants.FETCH_ALL_CUSTOMERS_FAILED:
     case constants.FETCH_ONE_CUSTOMER_FAILED:
     case constants.ADD_ONE_CUSTOMER_FAILED:
     case constants.UPDATE_ONE_CUSTOMER_FAILED:
-    case constants.DELETE_ONE_CUSTOMER_FAILED:        
+    case constants.DELETE_ONE_CUSTOMER_FAILED:     
+    case constants.DELETE_CUSTOMERS_FAILED:   
       return { ...state, err: action.payload };
 
     case constants.FETCH_ALL_CUSTOMERS_SUCCESS:
@@ -51,6 +54,19 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         all: state.all.filter(customer => customer.id !== action.payload.id)
+      }; 
+      
+    case constants.DELETE_CUSTOMERS_SUCCESS:
+      return {
+        ...state,
+        all: state.all.filter((customer, i) => {
+          if (action.payload.length === 1) {
+            return (customer.id !== action.payload[0].id)
+
+          } else {
+            return (customer.id !== action.payload[i].id)
+          }
+        })
       };  
 
     default:
