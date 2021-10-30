@@ -1,9 +1,13 @@
-import React, { useEffect } from 'react';
+import { useEffect, Fragment } from 'react';
+import { useDispatch } from 'react-redux';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import CssBaseline from '@material-ui/core/CssBaseline';
+
 import NavBar from './components/layout/NavBar';
 import Footer from './components/layout/Footer';
 import Content from './components/content/Content';
-import { useDispatch } from 'react-redux'
+import Customers from './components/customers/Customers';
+import PbgCms from './components/pbg-cms/PbgCms'
 
 import { fetchAllPlates } from './store/plates/actionCreators';
 import { fetchAllCustomers } from './store/customers/actionCreators';
@@ -20,12 +24,16 @@ const App = () => {
   });
 
   return (
-    <React.Fragment>
-      <CssBaseline />
-      <NavBar />
-      <Content />
-      <Footer />
-    </React.Fragment>
+    <Router>
+      <Fragment>
+        <CssBaseline />
+        <NavBar />
+        <Content />
+        <PbgCms />
+        <Footer />
+      </Fragment>
+    </Router>
+
   );
 }
 
