@@ -38,6 +38,12 @@ const EnhancedTableHead = (props) => {
       disablePadding: true,
       label: 'Email',
     },
+    {
+      id: 'details',
+      numeric: false,
+      disablePadding: true,
+      label: 'Details',
+    },
     
   ];
 

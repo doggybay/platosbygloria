@@ -20,7 +20,7 @@ const EnhancedTableToolbar = (props) => {
     setOpen(true);
   };
 
-  const handleClose = (value) => {
+  const handleClose = () => {
     setOpen(false);
     
   };
@@ -79,3 +79,6 @@ const EnhancedTableToolbar = (props) => {
 };
 
 export default EnhancedTableToolbar;
+
+
+
