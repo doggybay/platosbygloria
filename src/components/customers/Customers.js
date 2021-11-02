@@ -9,41 +9,13 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 import { customersStyles } from '../../styles/customers/styles';
-import { deleteCustomers, fetchOneCustomer } from '../../store/customers/actionCreators';
+import { deleteCustomers } from '../../store/customers/actionCreators';
 import EnhancedTableToolbar from '../data-table/EnhancedTableToolbar';
 import EnhancedTableHead from '../data-table/EnhancedTableHead';
+import { getComparator, stableSort } from'../utils/dataTable';
+
 import Customer from './Customer';
 
-
-function descendingComparator(a, b, orderBy) {
-  if (b[orderBy] < a[orderBy]) {
-    return -1;
-  }
-  if (b[orderBy] > a[orderBy]) {
-    return 1;
-  }
-  return 0;
-}
-
-function getComparator(order, orderBy) {
-  return order === 'desc'
-    ? (a, b) => descendingComparator(a, b, orderBy)
-    : (a, b) => -descendingComparator(a, b, orderBy);
-}
-
-// This method is created for cross-browser compatibility, if you don't
-// need to support IE11, you can use Array.prototype.sort() directly
-function stableSort(array, comparator) {
-  const stabilizedThis = array.map((el, index) => [el, index]);
-  stabilizedThis.sort((a, b) => {
-    const order = comparator(a[0], b[0]);
-    if (order !== 0) {
-      return order;
-    }
-    return a[1] - b[1];
-  });
-  return stabilizedThis.map((el) => el[0]);
-}
 
 
 
@@ -55,7 +27,7 @@ const Customers = () => {
   const classes = customersStyles();
 
   const [order, setOrder] = useState('asc');
-  const [orderBy, setOrderBy] = useState('calories');
+  const [orderBy, setOrderBy] = useState('name');
   const [selected, setSelected] = useState([]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -140,6 +112,7 @@ const Customers = () => {
 
   const handleDelete = () => {
     dispatch(deleteCustomers(ids));
+    setSelected([]);
 
   };
 

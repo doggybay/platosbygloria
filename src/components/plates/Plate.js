@@ -1,8 +1,6 @@
 import React from 'react';
-import Typography from "@material-ui/core/Typography";
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
-import CardContent from "@material-ui/core/CardContent";
 import CardMedia from '@material-ui/core/CardMedia';
 import { plateStyles } from '../../styles/plates/styles';
 
@@ -18,14 +16,6 @@ const Plate = ({ plate }) => {
             image={plate.picture}
             title="Image title"
           />
-          {/* <CardContent className={classes.cardContent}>
-            <Typography gutterBottom variant="h5" component="h2">
-              {plate.name}
-            </Typography>
-            <Typography>
-              {plate.description}
-            </Typography>
-          </CardContent> */}
         </Card>
       </Grid>
   );
