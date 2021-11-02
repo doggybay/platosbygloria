@@ -83,10 +83,29 @@ const deleteOnePlate = (id) => {
   };
 };
 
+const deletePlates = (ids) => {
+  return async (dispatch) => {
+    
+    try {
+      dispatch(actions.deletePlatesPending());
+
+      const formattedIds = { data: ids }
+
+      const res = await axios.delete(`${BASE_URL}/plates`, formattedIds);
+      
+      dispatch(actions.deletePlatesSuccess(res.data));
+      
+    } catch (err) {
+      dispatch(actions.deletePlatesFailed(err));
+    }
+  };
+}
+
 export {
   fetchAllPlates,
   fetchOnePlate,
   addOnePlate,
   updateOnePlate,
-  deleteOnePlate
+  deleteOnePlate,
+  deletePlates
 }

@@ -70,6 +70,22 @@ const deleteOnePlateFailed = (err) => ({
   payload: err
 });
 
+const deletePlatesFailed = (err) => ({
+  type: constants.DELETE_PLATES_FAILED,
+  payload: err
+});
+
+const deletePlatesPending = () => ({
+  type: constants.DELETE_PLATES_PENDING
+});
+
+const deletePlatesSuccess = (deletedPlates) => ({
+  type: constants.DELETE_PLATES_SUCCESS,
+  payload: deletedPlates
+});
+
+
+
 export {
   fetchAllPlatesPending,
   fetchAllPlatesSuccess,
@@ -85,5 +101,8 @@ export {
   updateOnePlateFailed,
   deleteOnePlatePending,
   deleteOnePlateSuccess,
-  deleteOnePlateFailed
+  deleteOnePlateFailed,
+  deletePlatesPending,
+  deletePlatesSuccess,
+  deletePlatesFailed
 }

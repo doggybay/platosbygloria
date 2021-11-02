@@ -12,14 +12,16 @@ const reducer = (state = initialState, action) => {
     case constants.FETCH_ONE_PLATE_PENDING:
     case constants.ADD_ONE_PLATE_PENDING:
     case constants.UPDATE_ONE_PLATE_PENDING:
-    case constants.DELETE_ONE_PLATE_PENDING:  
+    case constants.DELETE_ONE_PLATE_PENDING:
+    case constants.DELETE_PLATES_PENDING:    
       return state;
 
     case constants.FETCH_ALL_PLATES_FAILED:
     case constants.FETCH_ONE_PLATE_FAILED:
     case constants.ADD_ONE_PLATE_FAILED:
     case constants.UPDATE_ONE_PLATE_FAILED:
-    case constants.DELETE_ONE_PLATE_FAILED:        
+    case constants.DELETE_ONE_PLATE_FAILED:
+    case constants.DELETE_PLATES_FAILED:        
       return { ...state, err: action.payload };
 
     case constants.FETCH_ALL_PLATES_SUCCESS:
@@ -51,7 +53,20 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         all: state.all.filter(plate => plate.id !== action.payload.id)
-      };  
+      };
+
+    case constants.DELETE_PLATES_SUCCESS:
+      return {
+        ...state,
+        all: state.all.filter((plate, i) => {
+          if (action.payload.length === 1) {
+            return (plate.id !== action.payload[0].id)
+
+          } else {
+            return (plate.id !== action.payload[i].id)
+          }
+        })
+      }; 
 
     default:
       return state;
