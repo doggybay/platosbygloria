@@ -1,6 +1,8 @@
 import Container from '@material-ui/core/Container';
 import Box from '@mui/material/Box';
+
 import Customers from '../customers/Customers';
+import PlatesTable from '../plates/PlatesTable';
 
 
 const PbgCms = () => {
@@ -9,7 +11,7 @@ const PbgCms = () => {
     <div>
       <Container maxWidth="md">
         <Box sx={{ width: '100%' }}>
-          <Customers />
+          <PlatesTable />
         </Box>
       </Container>
     </div>
