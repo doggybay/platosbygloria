@@ -28,7 +28,7 @@ const EnhancedTableHead = (props) => {
     },
     {
       id: 'phone',
-      numeric: false,
+      numeric: true,
       disablePadding: true,
       label: 'Phone',
     },

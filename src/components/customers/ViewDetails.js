@@ -15,6 +15,6 @@ const ViewDetails = (props) => {
       </Container>
     </Dialog>
   );
-}
+};
 
 export default ViewDetails;

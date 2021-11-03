@@ -12,11 +12,11 @@ import Toolbar from '@mui/material/Toolbar';
 import EditIcon from '@mui/icons-material/Edit';
 
 import { updateOneCustomer } from '../../../store/customers/actionCreators';
+import { checkEditFields } from './utils';
 
 
 const EditCustomerForm = (props) => {
   const { customer, address } = props;
-  
   const [edit, setEdit] = useState(false);
   const [state, setState] = useState({});
 
@@ -45,26 +45,6 @@ const EditCustomerForm = (props) => {
     e.preventDefault();
     dispatch(updateOneCustomer(customer.id, state));
     setEdit(false)
-
-  };
-
-  const checkFields = (obj) => {
-    const stateToCheck = obj;
-    
-    if (stateToCheck.hasOwnProperty('first_name') || 
-        stateToCheck.hasOwnProperty('last_name') ||
-        stateToCheck.hasOwnProperty('email') ||
-        stateToCheck.hasOwnProperty('phone') ||
-        stateToCheck.hasOwnProperty('st_address') ||
-        stateToCheck.hasOwnProperty('city') ||
-        stateToCheck.hasOwnProperty('state') ||
-        stateToCheck.hasOwnProperty('zip_code')
-        ) {
-      return false
-    } else {
-      return true
-    }
-    
   };
 
 
@@ -81,9 +61,7 @@ const EditCustomerForm = (props) => {
             </IconButton>
           </Tooltip>
         ) : ''}
-        
       </Toolbar>
-      
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
           <TextField
@@ -97,7 +75,6 @@ const EditCustomerForm = (props) => {
             variant="standard"
             defaultValue={customer.first_name}
             onChange={handleChange}
-            
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -155,7 +132,6 @@ const EditCustomerForm = (props) => {
             onChange={handleChange}
           />
         </Grid>
-     
         <Grid item xs={12} sm={6}>
           <TextField
             disabled={edit ? false : true}
@@ -203,21 +179,13 @@ const EditCustomerForm = (props) => {
           <Grid item xs={12}>
             <Stack spacing={2} direction="row">
               <Button variant="contained" onClick={handleCancel}>Cancel</Button>
-              <Button variant="contained" disabled={checkFields(state)} onClick={handleSubmit}>Update</Button>
+              <Button variant="contained" disabled={checkEditFields(state)} onClick={handleSubmit}>Update</Button>
             </Stack>
           </Grid>
         ) : ''}
-        
       </Grid>
   </Paper>
   );
 }
 
 export default EditCustomerForm;
-
-{/* <Grid item xs={12}>
-  <Stack spacing={2} direction="row">
-    <Button variant="contained" onClick={handleCancel}>Cancel</Button>
-    <Button disabled={checkFields(state)} variant="contained" onClick={handleSubmit}>Save</Button>
-  </Stack>
-</Grid> */}

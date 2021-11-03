@@ -1,6 +1,3 @@
-
-
-
 const descendingComparator = (a, b, orderBy) => {
   if (b[orderBy] < a[orderBy]) {
     return -1;
@@ -17,8 +14,6 @@ const getComparator = (order, orderBy) => {
     : (a, b) => -descendingComparator(a, b, orderBy);
 };
 
-// This method is created for cross-browser compatibility, if you don't
-// need to support IE11, you can use Array.prototype.sort() directly
 const stableSort = (array, comparator) => {
   const stabilizedThis = array.map((el, index) => [el, index]);
   stabilizedThis.sort((a, b) => {

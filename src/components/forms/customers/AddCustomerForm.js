@@ -6,8 +6,9 @@ import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
-import { addOneCustomer } from '../../../store/customers/actionCreators';
 
+import { addOneCustomer } from '../../../store/customers/actionCreators';
+import { checkAddFields } from './utils';
 
 
 const AddCustomerForm = (props) => {
@@ -16,12 +17,10 @@ const AddCustomerForm = (props) => {
 
   const dispatch = useDispatch();
 
-
   // handlers...
   const handleChange = e => {
     let name= e.target.name;
     let value = e.target.value;
-
 
     setState({
       ...state,
@@ -33,32 +32,11 @@ const AddCustomerForm = (props) => {
     e.preventDefault()
     dispatch(addOneCustomer(state));
     onClose();
-    
-
   };
 
   const handleCancel = () => {
     onClose();
-  }
-
-  const checkFields = (obj) => {
-    const stateToCheck = obj;
-    
-    if (stateToCheck.hasOwnProperty('first_name') && 
-        stateToCheck.hasOwnProperty('last_name') &&
-        stateToCheck.hasOwnProperty('email') &&
-        stateToCheck.hasOwnProperty('phone') &&
-        stateToCheck.hasOwnProperty('st_address') &&
-        stateToCheck.hasOwnProperty('city') &&
-        stateToCheck.hasOwnProperty('state') &&
-        stateToCheck.hasOwnProperty('zip_code')
-        ) {
-      return false
-    } else {
-      return true
-    }
-    
-  }
+  };
 
 
   return (
@@ -126,7 +104,6 @@ const AddCustomerForm = (props) => {
             onChange={handleChange}
           />
         </Grid>
-       
         <Grid item xs={12} sm={6}>
           <TextField
             error={false}
@@ -165,12 +142,10 @@ const AddCustomerForm = (props) => {
             inputProps={{ maxLength: 5 }}
           />
         </Grid>
-        
         <Grid item xs={12}>
         <Stack spacing={2} direction="row">
-          
           <Button variant="contained" onClick={handleCancel}>Cancel</Button>
-          <Button disabled={checkFields(state)} variant="contained" onClick={handleSubmit}>Save</Button>
+          <Button disabled={checkAddFields(state)} variant="contained" onClick={handleSubmit}>Save</Button>
         </Stack>
         </Grid>
       </Grid>
@@ -179,15 +154,3 @@ const AddCustomerForm = (props) => {
 }
 
 export default AddCustomerForm;
-
-{/* <Grid item xs={12}>
-<TextField
-  id="address2"
-  name="opt_address"
-  label="Address line 2"
-  fullWidth
-  autoComplete="address-line2"
-  variant="standard"
-  onChange={handleChange}
-/>
-</Grid> */}

@@ -5,7 +5,6 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
-import EditIcon from '@mui/icons-material/Edit';
 import { alpha } from '@mui/material/styles';
 
 import AddCustomer from '../customers/AddCustomer';
@@ -24,8 +23,6 @@ const EnhancedTableToolbar = (props) => {
     setOpen(false);
     
   };
-
-  console.log('enhanced table toolbar: ', numSelected)
 
   return (
     <Toolbar

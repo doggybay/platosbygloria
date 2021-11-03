@@ -56,7 +56,6 @@ const Customer = (props) => {
       <TableCell align="left">{row.phone}</TableCell>
       <TableCell align="left">{row.email}</TableCell>
       <TableCell align="left">
-
         <Tooltip title="View Details">
           <IconButton onClick={openViewDetails}>
             <MoreVertIcon />

@@ -10,6 +10,7 @@ import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 
 import { addOnePlate } from '../../../store/plates/actionCreators';
+import { checkAddFields } from './utils';
 
 
 
@@ -17,7 +18,7 @@ const AddPlateForm = (props) => {
   const { onClose } = props;
   const [state, setState] = useState({});
   const [linkToPic, setLinkToPic] = useState('');
-  const [picDisplay, setPicDisplay] = useState('none')
+  const [picDisplay, setPicDisplay] = useState('none');
 
   const dispatch = useDispatch();
 
@@ -41,29 +42,11 @@ const AddPlateForm = (props) => {
     e.preventDefault();
     dispatch(addOnePlate(state));
     onClose();
-    
-
   };
 
   const handleCancel = () => {
     onClose();
-  }
-
-  // utils
-  const checkFields = (obj) => {
-    const stateToCheck = obj;
-    
-    if (stateToCheck.hasOwnProperty('name') && 
-        stateToCheck.hasOwnProperty('description') &&
-        stateToCheck.hasOwnProperty('picture') &&
-        stateToCheck.hasOwnProperty('price') 
-        ) {
-      return false
-    } else {
-      return true
-    }
-    
-  }
+  };
 
   return (
     <Paper variant="outlined" sx={{ my: { xs: 3, md: 3 }, p: { xs: 2, md: 6 } }}>
@@ -78,12 +61,10 @@ const AddPlateForm = (props) => {
             name="name"
             label="Plate name"
             fullWidth
-            
             variant="standard"
             onChange={handleChange}
           />
         </Grid>
-        
         <Grid item xs={12} sm={6}>
           <TextField
             required
@@ -125,20 +106,15 @@ const AddPlateForm = (props) => {
               height="240"
               image={linkToPic}
               alt="plate picture"
-            />
-            
-            
+            /> 
           </Card>
         </Grid>
-        
         <Grid item xs={12}>
           <Stack spacing={2} direction="row">
-            
             <Button variant="contained" onClick={handleCancel}>Cancel</Button>
-            <Button disabled={checkFields(state)} variant="contained" onClick={handleSubmit}>Save</Button>
+            <Button disabled={checkAddFields(state)} variant="contained" onClick={handleSubmit}>Save</Button>
           </Stack>
         </Grid>
-
       </Grid>
     </Paper>
   );
@@ -146,6 +122,3 @@ const AddPlateForm = (props) => {
 
 
 export default AddPlateForm;
-
-// link to picture 
-//https://res.cloudinary.com/platosbygloria/image/upload/v1632088621/plates/molletes_bjahmu.jpg

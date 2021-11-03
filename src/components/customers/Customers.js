@@ -107,17 +107,14 @@ const Customers = () => {
 
   const handleClose = () => {
     setOpen(false);
-    
   };
 
   const handleDelete = () => {
     dispatch(deleteCustomers(ids));
     setSelected([]);
-
   };
 
   const getCustomer = (id) => {
-    
     setCustId(id)
   };
   
