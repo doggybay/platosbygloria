@@ -6,10 +6,21 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
+import PlateDetails from './PlateDetails';
+
 
 const PlateRow = (props) => {
-  const { row, isItemSelected, labelId, handleClick } = props;
-  console.log('plate row: ', isItemSelected)
+  const { row, isItemSelected, labelId, handleClick, getPlate, plate } = props;
+  const [open, setOpen] = useState(false);
+
+
+  const openViewDetails = () => {
+    setOpen(true);
+  };
+
+  const closeViewDetails = () => {
+    setOpen(false);
+  };
 
   return (
     <TableRow
@@ -19,7 +30,7 @@ const PlateRow = (props) => {
       tabIndex={-1}
       key={row.id}
       selected={isItemSelected}
-      onClick={() => console.log(row.id)}
+      onClick={() => getPlate(row.id)}
     >
       <TableCell padding="checkbox">
         <Checkbox
@@ -41,15 +52,13 @@ const PlateRow = (props) => {
       </TableCell>
       <TableCell align="left">{row.description}</TableCell>
       <TableCell align="left">{row.price}</TableCell>
-      
       <TableCell align="left">
-
         <Tooltip title="View Details">
-          <IconButton >
+          <IconButton onClick={openViewDetails}>
             <MoreVertIcon />
           </IconButton>
         </Tooltip>
-        
+        <PlateDetails open={open} close={closeViewDetails} plate={plate[0]} />
       </TableCell>
     </TableRow>
   )

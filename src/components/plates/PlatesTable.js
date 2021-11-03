@@ -57,16 +57,12 @@ const PlatesTable = () => {
     if (selectedIndex === -1) {
       newSelected = newSelected.concat(selected, id);
       newIds = newIds.concat(ids, id);
-      
-
     } else if (selectedIndex === 0) {
       newSelected = newSelected.concat(selected.slice(1));
-      newIds = newIds.concat(ids.slice(1));
-      
+      newIds = newIds.concat(ids.slice(1)); 
     } else if (selectedIndex === selected.length - 1) {
       newSelected = newSelected.concat(selected.slice(0, -1));
-      newIds = newIds.concat(ids.slice(0, -1));
-      
+      newIds = newIds.concat(ids.slice(0, -1));  
     } else if (selectedIndex > 0) {
       newSelected = newSelected.concat(
         selected.slice(0, selectedIndex),
@@ -76,7 +72,6 @@ const PlatesTable = () => {
         ids.slice(0, selectedIndex),
         ids.slice(selectedIndex + 1),
       );
-      
     }
 
     setSelected(newSelected);
@@ -87,13 +82,12 @@ const PlatesTable = () => {
     setPage(newPage);
   };
 
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
+  const handleChangeRowsPerPage = (e) => {
+    setRowsPerPage(parseInt(e.target.value, 10));
     setPage(0);
   };
 
   const isSelected = (id) => {
-
     return (selected.indexOf(id) !== -1)
   };
 
@@ -103,13 +97,15 @@ const PlatesTable = () => {
 
   const handleClose = () => {
     setOpen(false);
-    
   };
 
   const handleDelete = () => {
     dispatch(deletePlates(ids));
     setSelected([]);
+  };
 
+  const getPlate = (id) => { 
+    setCustId(id)
   };
 
   // Avoid a layout jump when reaching the last page with empty rows.
@@ -130,14 +126,14 @@ const PlatesTable = () => {
             labelId={labelId}
             handleClick={handleClick}
             row={row}
-            
+            getPlate={getPlate}
             openViewDetails={handleClickOpen}
             closeViewDetails={handleClose}
             open={open}
-            
+            plate={plates.filter(plate => plate.id === custId)}
             />
           );
-        })
+        });
 
   return (
     <div>
@@ -147,7 +143,6 @@ const PlatesTable = () => {
           <Table
             sx={{ minWidth: 750 }}
             aria-labelledby="customersTable"
-            
           >
             <PlatesTableHead
               numSelected={selected.length}
@@ -158,8 +153,6 @@ const PlatesTable = () => {
               rowCount={rows.length}
             />
             <TableBody>
-              {/* if you don't need to support IE11, you can replace the `stableSort` call with:
-                 rows.slice().sort(getComparator(order, orderBy)) */}
               {listOfPlates}
               {emptyRows > 0 && (
                 <TableRow>

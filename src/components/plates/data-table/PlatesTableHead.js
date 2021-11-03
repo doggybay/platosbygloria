@@ -28,7 +28,7 @@ const PlatesTableHead = (props) => {
     },
     {
       id: 'price',
-      numeric: false,
+      numeric: true,
       disablePadding: true,
       label: 'Price',
     },
