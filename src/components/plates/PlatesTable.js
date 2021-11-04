@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -9,12 +9,10 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 import PlateRow from './PlateRow';
-import { deletePlates } from '../../store/plates/actionCreators';
-
 import PlatesTableToolbar from './data-table/PlatesTableToolbar';
 import PlatesTableHead from './data-table/PlatesTableHead';
 import { getComparator, stableSort } from '../utils/dataTable';
-
+import { deletePlates } from '../../store/plates/actionCreators';
 
 
 
@@ -32,16 +30,16 @@ const PlatesTable = () => {
   const [ids, setIds] = useState([]);
   const [custId, setCustId] = useState(0);
 
-  const handleRequestSort = (event, property) => {
+  const handleRequestSort = (e, property) => {
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(property);
   };
 
-  const handleSelectAllClick = (event) => {
-    if (event.target.checked) {
+  const handleSelectAllClick = (e) => {
+    if (e.target.checked) {
       const newSelecteds = rows.map((n) => n.id);
-      const newIds = rows.map((n) => n.id);
+      
       setSelected(newSelecteds);
 
       return;

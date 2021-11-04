@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -8,14 +8,11 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-import { customersStyles } from '../../styles/customers/styles';
-import { deleteCustomers } from '../../store/customers/actionCreators';
+import Customer from './Customer';
 import EnhancedTableToolbar from '../data-table/EnhancedTableToolbar';
 import EnhancedTableHead from '../data-table/EnhancedTableHead';
 import { getComparator, stableSort } from'../utils/dataTable';
-
-import Customer from './Customer';
-
+import { deleteCustomers } from '../../store/customers/actionCreators';
 
 
 
@@ -24,7 +21,6 @@ const Customers = () => {
   const customers = useSelector(state => state.customers.all);
   const rows = customers;
   
-  const classes = customersStyles();
 
   const [order, setOrder] = useState('asc');
   const [orderBy, setOrderBy] = useState('name');
@@ -45,7 +41,7 @@ const Customers = () => {
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
       const newSelecteds = rows.map((n) => n.id);
-      const newIds = rows.map((n) => n.id);
+      
       setSelected(newSelecteds);
 
       return;
@@ -87,12 +83,12 @@ const Customers = () => {
     setIds(newIds);
   };
 
-  const handleChangePage = (event, newPage) => {
+  const handleChangePage = (e, newPage) => {
     setPage(newPage);
   };
 
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
+  const handleChangeRowsPerPage = (e) => {
+    setRowsPerPage(parseInt(e.target.value, 10));
     setPage(0);
   };
 
@@ -154,7 +150,6 @@ const Customers = () => {
           <Table
             sx={{ minWidth: 750 }}
             aria-labelledby="customersTable"
-            
           >
             <EnhancedTableHead
               numSelected={selected.length}
@@ -165,8 +160,6 @@ const Customers = () => {
               rowCount={rows.length}
             />
             <TableBody>
-              {/* if you don't need to support IE11, you can replace the `stableSort` call with:
-                 rows.slice().sort(getComparator(order, orderBy)) */}
               {listOfCustomers}
               {emptyRows > 0 && (
                 <TableRow>
