@@ -1,23 +1,33 @@
-import React from 'react';
-import CssBaseline from "@material-ui/core/CssBaseline";
-import { ThemeProvider } from "@material-ui/core/styles";
-import NavBar from "./components/layout/NavBar";
-import Footer from "./components/layout/Footer";
-import Content from "./components/content/Content";
-import theme from "./theme/theme";
+import { useEffect, Fragment } from 'react';
+import { useDispatch } from 'react-redux';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { useAuth0 } from '@auth0/auth0-react';
+
+import NavBar from './components/layout/NavBar';
+import Footer from './components/layout/Footer';
+import Content from './components/content/Content';
+import PbgCms from './components/pbg-cms/PbgCms'
+import { fetchAllPlates } from './store/plates/actionCreators';
 
 
-function App() {
+const App = () => {
+
+  const dispatch = useDispatch();
+  const { isAuthenticated } = useAuth0();
+  
+  useEffect(() => {
+    dispatch(fetchAllPlates());
+  });
 
   return (
-    <React.Fragment>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <NavBar />
-        <Content />
-        <Footer />
-      </ThemeProvider>
-    </React.Fragment>
+    <Fragment>
+      <CssBaseline />
+      <NavBar />
+      <Content />
+      {isAuthenticated ? (<PbgCms />) : ''}
+      <Footer />
+    </Fragment>
   );
 }
 
