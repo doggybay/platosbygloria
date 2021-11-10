@@ -1,39 +1,29 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import Container from '@material-ui/core/Container';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Paper from '@mui/material/Paper';
+
 import Customers from '../customers/Customers';
 import PlatesTable from '../plates/PlatesTable';
+import TabPanel from './TabPanel';
 
+import { fetchAllPlates } from '../../store/plates/actionCreators';
+import { fetchAllCustomers } from '../../store/customers/actionCreators';
 
-
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`tabpanel-${index}`}
-      aria-labelledby={`tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ width: '100%' }}>
-          {children} 
-        </Box>
-      )}
-    </div>
-  );
-}
 
 
 
 const PbgCms = () => {
+  const dispatch = useDispatch();
   const [value, setValue] = useState(0);
+
+  useEffect(() => {
+    dispatch(fetchAllPlates());
+    dispatch(fetchAllCustomers());
+  });
 
   const handleChange = (e, newValue) => {
     setValue(newValue);
@@ -43,7 +33,7 @@ const PbgCms = () => {
     <div>
       <Container maxWidth="md">
         <Box sx={{ width: '100%' }}>
-          <Paper variant="outlined" >
+          <Paper variant="outlined" sx={{ marginTop: "5rem" }} >
             <Box sx={{  borderColor: 'divider' }}>
               <Tabs value={value} onChange={handleChange}>
                 <Tab label="Customers" id="customers" />
