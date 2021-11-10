@@ -1,8 +1,13 @@
 version: '3'
 
 services:
-  platosbygloria-dev:
-    container_name: platosbygloria-dev
+  platosbygloria:
+    container_name: platosbygloria
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - proxy
     build: .
     volumes:
       - .:/app
@@ -11,3 +16,6 @@ services:
       - 3000:3000
     
     command: npm start
+networks:
+  proxy:
+    external: true
