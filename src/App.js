@@ -21,18 +21,13 @@ const App = () => {
   });
 
   return (
-    <Router>
-      <Fragment>
-        <CssBaseline />
-        <NavBar />
-        <Switch>
-          
-        </Switch>
-        <Content />
-        {isAuthenticated ? (<PbgCms />) : ''}
-        <Footer />
-      </Fragment>
-    </Router>
+    <Fragment>
+      <CssBaseline />
+      <NavBar />
+      <Content />
+      {isAuthenticated ? (<PbgCms />) : ''}
+      <Footer />
+    </Fragment>
   );
 }
 
