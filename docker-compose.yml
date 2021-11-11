@@ -1,20 +1,18 @@
-version: '3'
+version: '3.9'
 
 services:
   platosbygloria:
+    build:
+      context: ./
     container_name: platosbygloria
     restart: unless-stopped
     security_opt:
       - no-new-privileges:true
     networks:
       - proxy
-    build: .
-    volumes:
-      - .:/app
-
+    env_file: ./.env
     ports:
       - 3000:3000
-    
     command: npm start
 networks:
   proxy:

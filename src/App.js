@@ -1,6 +1,5 @@
 import { useEffect, Fragment } from 'react';
 import { useDispatch } from 'react-redux';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { useAuth0 } from '@auth0/auth0-react';
 

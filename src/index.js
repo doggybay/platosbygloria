@@ -16,7 +16,7 @@ ReactDOM.render(
     <Auth0Provider
       domain={process.env.REACT_APP_domain}
       clientId={process.env.REACT_APP_clientId}
-      redirectUri={process.env.REACT_APP_redirectUri}
+      redirectUri="https://www.platosbygloria.com"
     >
       <Provider store={store}>
         <ThemeProvider theme={theme}>
