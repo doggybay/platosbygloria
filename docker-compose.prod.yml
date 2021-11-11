@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  pbg-prod:
+    build:
+      context: ./
+      dockerfile: Dockerfile.prod
+    container_name: pbg-prod
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - proxy
+    ports:
+      - 1337:80
+networks:
+  proxy:
+    external: true
