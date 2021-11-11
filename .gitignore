@@ -30,5 +30,3 @@ firebase-debug.log*
 firestore-debug.log*
 ui-debug.log*
 
-Dockerfile
-Dockerfile.prod
