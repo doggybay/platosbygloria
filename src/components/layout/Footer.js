@@ -9,7 +9,6 @@ const Footer = () => {
   const classes = footerStyles();
   const { loginWithRedirect, logout, isAuthenticated, error } = useAuth0();
 
-  console.log('footer: ', useAuth0())
   return (
     <footer className={classes.footer}>
       <Typography variant="subtitle1" align="center" gutterBottom>
